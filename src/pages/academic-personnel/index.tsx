@@ -1,6 +1,5 @@
 import LayoutPrimary from "@/layouts/primary";
 import OacademicPersonnel from "@/themes/AcademicPersonnel";
-
 const AcademicPersonnel: React.FC = () => {
   return (
     <LayoutPrimary>
@@ -8,5 +7,4 @@ const AcademicPersonnel: React.FC = () => {
     </LayoutPrimary>
   );
 };
-
 export default AcademicPersonnel;

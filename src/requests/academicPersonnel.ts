@@ -2,7 +2,7 @@ import axiosInstance from "@/axios/primary";
 
 export const getAcademicPersonnel = async () => {
   try {
-    const response = await axiosInstance.get(
+    const response = await axiosInstance.get<>(
       "/academic-personnel-collections-i"
     );
     return response.data;

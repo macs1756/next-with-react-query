@@ -1,4 +1,4 @@
-import { getAcademicPersonnel } from "@/requests/academicPersonnel";
+import { getAcademicPersonnel, getAcademicPersonnelById } from "@/requests/academicPersonnel";
 import { useQuery } from "@tanstack/react-query";
 
 class AcademicPersonnel {
@@ -13,7 +13,7 @@ class AcademicPersonnel {
   getAcademicPersonnelById(id: string) {
     const { data, isLoading, error } = useQuery({
       queryKey: ["getAcademicPersonnelById"],
-      queryFn: () => getAcademicPersonnel(),
+      queryFn: () => getAcademicPersonnelById(id),
     });
     return { data, isLoading, error };
   }

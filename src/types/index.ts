@@ -20,3 +20,7 @@ export interface IacademicPersonnel {
   data: IacademicPersonnelCard[];
   meta: Imeta;
 }
+
+export interface IacademicPersonnelSingle {
+  data: IacademicPersonnelCard;
+}

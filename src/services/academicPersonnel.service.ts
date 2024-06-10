@@ -2,11 +2,14 @@ import { getAcademicPersonnel } from "@/requests/academicPersonnel";
 import { useQuery } from "@tanstack/react-query";
 
 class AcademicPersonnel {
-  async getAcademicPersonnel() {
-    return useQuery({
+  
+    getAcademicPersonnel() {
+    const { data, isLoading, error } = useQuery({
       queryKey: ["getAcademicPersonnel"],
-      queryFn: () => await getAcademicPersonnel(),
+      queryFn: () => getAcademicPersonnel(),
     });
+
+    return { data, isLoading, error };
   }
 }
 

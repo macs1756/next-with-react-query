@@ -7,8 +7,6 @@ const OacademicPersonnel: React.FC = () => {
   const { data, error, isLoading } =
     academicPersonnelService.getAcademicPersonnel();
 
-  console.log(data);
-
   return (
     <div className="py-[50px]">
       {!error ? (
@@ -21,9 +19,7 @@ const OacademicPersonnel: React.FC = () => {
                 Total: {data?.meta.pagination.total}
               </h5>
               {data?.data.map((e) => (
-                <div
-                  className="p-[8px]"
-                  key={e.id + "academicPersonnelCard"}>
+                <div className="p-[8px]" key={e.id + "academicPersonnelCard"}>
                   <Link href={DomainFrontend + "/academic-personnel/" + e.id}>
                     {e.attributes.fullName}
                   </Link>

@@ -1,10 +1,10 @@
 import LayoutPrimary from "@/layouts/primary";
-import OacademicPersonnel from "./AcademicPersonnel";
+import OacademicPersonnelSingle from "@/themes/AcademicPersonnelSingle";
 
 const AcademicPersonnelSingle: React.FC = () => {
   return(
   <LayoutPrimary>
-    <OacademicPersonnel />
+    <OacademicPersonnelSingle />
   </LayoutPrimary>);
 };
 

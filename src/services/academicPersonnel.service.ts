@@ -1,5 +1,9 @@
-import { getAcademicPersonnel, getAcademicPersonnelById } from "@/requests/academicPersonnel";
-import { useQuery } from "@tanstack/react-query";
+import {
+  deleteAcademicPersonnelById,
+  getAcademicPersonnel,
+  getAcademicPersonnelById,
+} from "@/requests/academicPersonnel";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 class AcademicPersonnel {
   getAcademicPersonnel() {
@@ -16,6 +20,14 @@ class AcademicPersonnel {
       queryFn: () => getAcademicPersonnelById(id),
     });
     return { data, isLoading, error };
+  }
+
+  deleteAcademicPersonnelById(id: string) {
+    const { status } = useMutation({
+      mutationKey: ["deleteAcademicPersonnel"],
+      mutationFn: () => deleteAcademicPersonnelById(id),
+    });
+    return { status };
   }
 }
 

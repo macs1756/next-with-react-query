@@ -25,3 +25,16 @@ export const getAcademicPersonnelById = async (id: string) => {
     throw err;
   }
 };
+
+
+export const deleteAcademicPersonnelById = async (id: string) => {
+  try {
+    const response = await axiosInstance.delete(
+      `/academic-personnel-collections-i/${id}`
+    );
+    return response;
+  } catch (err: any) {
+    console.error(err);
+    throw err;
+  }
+};

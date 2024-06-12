@@ -12,12 +12,13 @@ const OacademicPersonnelSingle: React.FC = () => {
   if (!id) return <div>Error with found id</div>;
 
   const { data, error, isLoading } =
-  academicPersonnelService.getAcademicPersonnelById(urlIdToString(id));
+    academicPersonnelService.getAcademicPersonnelById(urlIdToString(id));
 
   const deleteEntity = (id: string) => {
-    alert(id)
-    // need to call academicPersonnelService with dethod delete
-  }
+    const { status } = academicPersonnelService.deleteAcademicPersonnelById(id);
+    console.log(status);
+    
+  };
 
   return (
     <LayoutFetch error={error} isLoading={isLoading}>
@@ -27,7 +28,8 @@ const OacademicPersonnelSingle: React.FC = () => {
 
       <button
         className="mt-[24px] rounded-lg py-[8px] px-[14px] bg-slate-600"
-        onClick={() => deleteEntity(urlIdToString(id))}>
+        onClick={() => deleteEntity(urlIdToString(id))}
+      >
         Delete this entity
       </button>
     </LayoutFetch>

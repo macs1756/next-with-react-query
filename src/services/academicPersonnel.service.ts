@@ -1,7 +1,14 @@
-import { getAcademicPersonnel, getAcademicPersonnelById } from "@/requests/academicPersonnel";
+import axiosInstance from "@/axios/primary";
+import {
+  getAcademicPersonnel,
+  getAcademicPersonnelById,
+} from "@/requests/academicPersonnel";
 import { useQuery } from "@tanstack/react-query";
 
+
 class AcademicPersonnel {
+//next time use class as folder for axios requests and use tanstack query in jsx
+
   getAcademicPersonnel() {
     const { data, isLoading, error } = useQuery({
       queryKey: ["getAcademicPersonnel"],
@@ -17,6 +24,20 @@ class AcademicPersonnel {
     });
     return { data, isLoading, error };
   }
+
+  
+  deleteAcademicPersonnelById(id: string) {
+    try {
+      const response = axiosInstance.delete(
+        `/academic-personnel-collections-i/${id}`
+      );
+      return { response };
+    } catch (err: any) {
+      console.error(err);
+      return err;
+    }
+  }
+
 }
 
 export const academicPersonnelService = new AcademicPersonnel();

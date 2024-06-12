@@ -13,7 +13,6 @@ export const getAcademicPersonnel = async () => {
   }
 };
 
-
 export const getAcademicPersonnelById = async (id: string) => {
   try {
     const response = await axiosInstance.get<IacademicPersonnelSingle>(
@@ -25,3 +24,4 @@ export const getAcademicPersonnelById = async (id: string) => {
     throw err;
   }
 };
+

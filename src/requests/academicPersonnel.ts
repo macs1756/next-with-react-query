@@ -13,7 +13,6 @@ export const getAcademicPersonnel = async () => {
   }
 };
 
-
 export const getAcademicPersonnelById = async (id: string) => {
   try {
     const response = await axiosInstance.get<IacademicPersonnelSingle>(
@@ -26,15 +25,3 @@ export const getAcademicPersonnelById = async (id: string) => {
   }
 };
 
-
-export const deleteAcademicPersonnelById = async (id: string) => {
-  try {
-    const response = await axiosInstance.delete(
-      `/academic-personnel-collections-i/${id}`
-    );
-    return response;
-  } catch (err: any) {
-    console.error(err);
-    throw err;
-  }
-};

@@ -14,9 +14,9 @@ const OacademicPersonnelSingle: React.FC = () => {
   const { data, error, isLoading } =
     academicPersonnelService.getAcademicPersonnelById(urlIdToString(id));
 
-  const deleteEntity = (id: string) => {
-    const { status } = academicPersonnelService.deleteAcademicPersonnelById(id);
-    console.log(status);
+  const deleteEntity = async (id: string) => {
+    const { response } = await academicPersonnelService.deleteAcademicPersonnelById(id);
+    console.log(response);
     
   };
 

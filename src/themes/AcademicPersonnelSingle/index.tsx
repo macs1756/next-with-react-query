@@ -1,4 +1,5 @@
 "use client";
+import Dropdown from "@/components/Dropdown";
 import LayoutFetch from "@/layouts/fetchProvide";
 import { academicPersonnelService } from "@/services/academicPersonnel.service";
 import { urlIdToString } from "@/utils";
@@ -14,11 +15,13 @@ const OacademicPersonnelSingle: React.FC = () => {
   const { data, error, isLoading } =
     academicPersonnelService.getAcademicPersonnelById(urlIdToString(id));
 
+  
   const deleteEntity = async (id: string) => {
     const { response } = await academicPersonnelService.deleteAcademicPersonnelById(id);
     console.log(response);
-    
   };
+
+
 
   return (
     <LayoutFetch error={error} isLoading={isLoading}>
@@ -32,6 +35,7 @@ const OacademicPersonnelSingle: React.FC = () => {
       >
         Delete this entity
       </button>
+      <Dropdown />
     </LayoutFetch>
   );
 };

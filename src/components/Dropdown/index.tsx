@@ -9,6 +9,7 @@ const Dropdown = () => {
   useEffect(() => {
     parent.current && autoAnimate(parent.current, {
       easing: "linear"
+      
     });
   }, [parent]);
 

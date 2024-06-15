@@ -31,11 +31,15 @@ const Dropdown = () => {
           </strong>
 
           {show && (
-            <ul className={"text-black py-[10px] bg-white notScale"}>
+            <ul className={"text-black py-[8px] bg-white notScale"}>
               {data &&
-                data.data.map((e) => (
+                data.data.map((e, i) => (
                   <li
-                    className="py-[5px] px-[10px] border-b"
+                    className={
+                      "py-[5px] px-[10px] " + (Number(data.data.length - 1) !== i
+                        ? "border-b"
+                        : "")
+                    }
                     key={e.id + "dropdown"}
                   >
                     {e.attributes.fullName}

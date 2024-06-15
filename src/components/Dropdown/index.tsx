@@ -7,7 +7,9 @@ const Dropdown = () => {
   const parent = useRef(null);
 
   useEffect(() => {
-    parent.current && autoAnimate(parent.current);
+    parent.current && autoAnimate(parent.current, {
+      easing: "linear"
+    });
   }, [parent]);
 
   const reveal = () => setShow(!show);
@@ -15,30 +17,34 @@ const Dropdown = () => {
   const { data } = academicPersonnelService.getAcademicPersonnel();
 
   return (
-    <div
-      ref={parent}
-      className="bg-white w-[300px] rounded-sm p-[10px] relative mt-[24px]"
-    >
-      <strong
-        className="dropdown-label bg-white  text-black w-full cursor-pointer"
-        onClick={reveal}
-      >
-        Open
-      </strong>
+    <div className="relative py-[20px]">
+      <div className="absolute top-0">
+        <div
+          ref={parent}
+          className="bg-white w-[300px] rounded-sm  relative mt-[24px] "
+        >
+          <strong
+            className="dropdown-label block bg-white  text-black w-full cursor-pointer p-[10px]"
+            onClick={reveal}
+          >
+            Open
+          </strong>
 
-      {show && (
-        <ul className=" text-black py-[10px] ">
-          {data &&
-            data.data.map((e) => (
-              <li
-                className="py-[5px] px-[10px] border-b"
-                key={e.id + "dropdown"}
-              >
-                {e.attributes.fullName}
-              </li>
-            ))}
-        </ul>
-      )}
+          {show && (
+            <ul className={"text-black py-[10px] bg-white notScale"}>
+              {data &&
+                data.data.map((e) => (
+                  <li
+                    className="py-[5px] px-[10px] border-b"
+                    key={e.id + "dropdown"}
+                  >
+                    {e.attributes.fullName}
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

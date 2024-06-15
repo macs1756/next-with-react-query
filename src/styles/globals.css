@@ -36,3 +36,12 @@ body {
 body {
   padding: 50px;
 }
+
+.notScale{
+  transform: scale(1) !important;
+  
+}
+
+.notScale li{
+opacity: 1 !important;
+}

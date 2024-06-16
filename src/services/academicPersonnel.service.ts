@@ -9,11 +9,16 @@ import { useQuery } from "@tanstack/react-query";
 class AcademicPersonnel {
 //next time use class as folder for axios requests and use tanstack query in jsx
 
-  getAcademicPersonnel() {
-    const { data, isLoading, error } = useQuery({
+  getAcademicPersonnel(value: string | null) {
+
+  
+    const { data, isLoading, error, refetch } = useQuery({
       queryKey: ["getAcademicPersonnel"],
-      queryFn: () => getAcademicPersonnel(),
+      queryFn: () => getAcademicPersonnel(value),
     });
+    
+    refetch();
+
     return { data, isLoading, error };
   }
 

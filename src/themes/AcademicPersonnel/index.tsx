@@ -2,13 +2,29 @@
 import { DomainFrontend } from "@/consts";
 import { academicPersonnelService } from "@/services/academicPersonnel.service";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 const OacademicPersonnel: React.FC = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [debounceInputValue] = useDebounce(inputValue, 1000);
+
+
   const { data, error, isLoading } =
-    academicPersonnelService.getAcademicPersonnel();
+          academicPersonnelService.getAcademicPersonnel(debounceInputValue);
+  
 
   return (
     <div className="py-[50px]">
+      <input
+        className="text-black mb-[30px] p-[5px]"
+        onChange={(e) => {
+          setInputValue(e.target.value);
+        }}
+        type="text"
+        value={inputValue}
+      />
+
       {!error ? (
         <div>
           {isLoading ? (

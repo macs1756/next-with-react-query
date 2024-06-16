@@ -1,10 +1,21 @@
 import axiosInstance from "@/axios/primary";
 import { IacademicPersonnel, IacademicPersonnelSingle } from "@/types";
 
-export const getAcademicPersonnel = async () => {
+export const getAcademicPersonnel = async (value: string | null) => {
+
+  console.log(value);
+  
+
+  const params = new URLSearchParams([
+    ["populate", "*"],
+    ["filter[fullName][$eq]", value ?? ""] 
+  ]
+  );
+
+
   try {
     const response = await axiosInstance.get<IacademicPersonnel>(
-      "/academic-personnel-collections-i"
+      `/academic-personnel-collections-i?${params}`
     );
     return response.data;
   } catch (err: any) {

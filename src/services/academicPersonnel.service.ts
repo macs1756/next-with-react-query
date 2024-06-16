@@ -11,12 +11,14 @@ class AcademicPersonnel {
 
   getAcademicPersonnel(value: string | null) {
 
+  
     const { data, isLoading, error, refetch } = useQuery({
       queryKey: ["getAcademicPersonnel"],
       queryFn: () => getAcademicPersonnel(value),
-      
     });
+    
     refetch();
+
     return { data, isLoading, error };
   }
 

@@ -3,25 +3,25 @@ import { IacademicPersonnel, IacademicPersonnelSingle } from "@/types";
 
 export const getAcademicPersonnel = async (value: string | null) => {
 
-  console.log(value);
-  
-
   const params = new URLSearchParams([
     ["populate", "*"],
-    ["filter[fullName][$eq]", value ?? ""] 
-  ]
-  );
+  ]);
 
-
-  try {
-    const response = await axiosInstance.get<IacademicPersonnel>(
-      `/academic-personnel-collections-i?${params}`
-    );
-    return response.data;
-  } catch (err: any) {
-    console.error(err);
-    throw err;
+  if (value) {
+    params.append("filters[fullName][$containsi]", value);
+  } else {
+    params.delete("filters[fullName][$containsi]");
   }
+    
+    try {
+      const response = await axiosInstance.get<IacademicPersonnel>(
+        `/academic-personnel-collections-i?${params}`
+      );
+      return response.data;
+    } catch (err: any) {
+      console.error(err);
+      throw err;
+    }
 };
 
 export const getAcademicPersonnelById = async (id: string) => {

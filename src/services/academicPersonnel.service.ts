@@ -17,9 +17,7 @@ class AcademicPersonnel {
       queryFn: () => getAcademicPersonnel(value),
     });
     
-    refetch();
-
-    return { data, isLoading, error };
+    return { data, isLoading, error, refetch };
   }
 
   getAcademicPersonnelById(id: string) {

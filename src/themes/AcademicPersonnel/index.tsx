@@ -9,10 +9,12 @@ const OacademicPersonnel: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [debounceInputValue] = useDebounce(inputValue, 1000);
 
+  const { data, error, isLoading, refetch } =
+    academicPersonnelService.getAcademicPersonnel(debounceInputValue);
 
-  const { data, error, isLoading } =
-          academicPersonnelService.getAcademicPersonnel(debounceInputValue);
-  
+  useEffect(() => {
+    refetch();
+  }, [debounceInputValue]);
 
   return (
     <div className="py-[50px]">

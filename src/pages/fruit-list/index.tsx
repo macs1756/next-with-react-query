@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import autoAnimate from "@formkit/auto-animate";
-import "./index.css"
+
 
 const FruitList = () => {
   const [items, setItems] = useState(["🍎 Apple", "🍌 Banana", "🍒 Cherry"]);
@@ -20,7 +20,7 @@ const FruitList = () => {
     "🥭 Mango",
   ]);
 
-  const remove = (item) => {
+  const remove = (item: any) => {
     setItems((prevItems) => {
       const updatedItems = prevItems.filter((fruit) => {
         if (fruit === item) {
@@ -38,7 +38,7 @@ const FruitList = () => {
       setItems((prevItems) => {
         const newItems = [...prevItems];
         const randomIndex = Math.floor(Math.random() * newItems.length);
-        newItems.splice(randomIndex, 0, fruitBasket.current.shift());
+        newItems.splice(randomIndex, 0, fruitBasket.current.shift() ?? "");
         return newItems;
       });
     } else {
@@ -81,12 +81,18 @@ const FruitList = () => {
           </li>
         ))}
       </ul>
-      <button className="button button--add button--alt" onClick={add}>
-        + Add Fruit
-      </button>
-      <button className="button button--random button--alt" onClick={randomize}>
-        Randomize
-      </button>
+
+      <div className="flex gap-[12px]">
+        <button className="button button--add button--alt" onClick={add}>
+          Add Fruit
+        </button>
+        <button
+          className="button button--random button--alt"
+          onClick={randomize}
+        >
+          Randomize
+        </button>
+      </div>
     </div>
   );
 };

@@ -110,3 +110,20 @@ body {
 [data-dark-mode="true"] .example.list-example li button svg {
   fill: rgb(244, 67, 67);
 }
+
+.draggable {
+  transition: transform 0.3s ease;
+}
+
+.draggable {
+  transition: transform 0.3s ease;
+}
+
+.dragging {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.dropped {
+  transform: scale(1);
+}

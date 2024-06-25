@@ -1,7 +1,10 @@
 import update from "immutability-helper";
 import type { FC } from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Card } from "./card";
+import autoAnimate from "@formkit/auto-animate";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const style = {
   width: 400,
@@ -16,7 +19,7 @@ export interface ContainerState {
   cards: Item[];
 }
 
-export const Container: FC = () => {
+ const Container: React.FC = () => {
   {
     const [cards, setCards] = useState([
       {
@@ -71,14 +74,29 @@ export const Container: FC = () => {
             moveCard={moveCard}
           />
         );
-      },
-      []
+      }, [moveCard]
     );
+     
+     const parent = useRef(null);
 
-    return (
-      <>
-        <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
-      </>
-    );
+     useEffect(() => {
+       parent.current &&
+         autoAnimate(parent.current, {
+           duration: 200,
+         });
+     }, [parent]);
+
+     return (
+       <div>
+         <DndProvider backend={HTML5Backend}>
+           <div style={style} ref={parent}>
+             {cards.map((card, i) => renderCard(card, i))}
+           </div>
+         </DndProvider>
+       </div>
+     );
   }
 };
+
+
+export default Container;

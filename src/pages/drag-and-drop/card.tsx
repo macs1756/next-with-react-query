@@ -3,15 +3,21 @@ import type { FC } from "react";
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-import { ItemTypes } from "./ItemTypes";
+
 
 const style = {
-  border: "1px dashed gray",
   padding: "0.5rem 1rem",
+  border: "none", 
+  borderRadius: '3px',
   marginBottom: ".5rem",
-  backgroundColor: "white",
+  backgroundColor: "#212134",
   cursor: "move",
 };
+
+export const ItemTypes = {
+  CARD: "card",
+};
+
 
 export interface CardProps {
   id: any;
@@ -102,7 +108,12 @@ export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
+    <div
+      ref={ref}
+      style={{ ...style, opacity }}
+      data-handler-id={handlerId}
+      className="border bg-red"
+    >
       {text}
     </div>
   );
